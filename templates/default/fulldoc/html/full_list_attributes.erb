@@ -1,0 +1,14 @@
+<% even_odd = 'odd'  %>
+<% @items.each do |item| %>
+  <% even_odd = (even_odd == 'even' ? 'odd' : 'even') %>
+    <li id="object_<%= item.path %>" class="<%= even_odd %>">
+      <div class="item" style="padding-left:30px">
+        <span class='object_link'>
+          <a href="<%= url_for(item) %>" title="<%= item.name %>">
+            <%= h(item.name) %>
+          </a>
+        </span>
+      <small class='search_info'><%= item.name %></small>
+      </div>
+    </li>
+<% end %>

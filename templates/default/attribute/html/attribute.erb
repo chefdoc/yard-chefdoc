@@ -1,0 +1,30 @@
+<h2>Attribute <%= object.name %></h2>
+  <%= htmlify(object.docstring, :markdown) %>
+  <table style="width:100%">
+    <thead>
+      <th>Attribute</th>
+      <th>Precedence</th>
+      <th>Description</th>
+      <th>Default value</th>
+    </thead>
+    <tbody>
+      <% n = 2 %>
+      <% object.attributes.each do |attribute| %>
+        <tr class="r<%= n %>">
+          <td>
+            <strong><%= attribute.path %></strong>
+          </td>
+          <td><%= attribute.precedence %></td>
+          <td><%= htmlify attribute.docstring %></td>
+          <td>
+            <% if attribute.default.size > 60 %>
+            <span>[<a href="#" onclick="return false;" class="toggleSource">View source</a>]</span><br /><span class="source_code"><%= htmlify attribute.default %></span>
+            <% else %>
+            <%= htmlify attribute.default %>
+            <%end%>
+          </td>
+        </tr>
+        <% n = n == 1 ? 2 : 1 %>
+      <% end %>
+    </tbody>
+  </table>

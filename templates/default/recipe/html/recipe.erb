@@ -1,0 +1,8 @@
+<h2>Recipe <%= object.name %></h2>
+<div class="method_details">
+  <h3 class="signature">
+    <a name="<%= object.name %>"><strong><%= object.name %></strong></a>
+  </h3>
+  <%= htmlify(object.docstring, :markdown) %>
+  <%= yieldall :object => object, :owner => object.parent, :index => 1 %>
+</div>

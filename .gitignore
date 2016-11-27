@@ -1,0 +1,13 @@
+bin
+.bundle
+Gemfile.lock
+
+# Docs
+test/fixtures/test-cookbook1/.yardoc
+test/fixtures/test-cookbook1/doc
+
+# Build specifics
+pkg
+
+doc
+.yardoc

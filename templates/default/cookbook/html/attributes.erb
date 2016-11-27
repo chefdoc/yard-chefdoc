@@ -1,0 +1,14 @@
+<% attributes = chefsorted_objects(:attribute) %>
+<% if attributes.size > 0 %>
+  <h2>Attributes summary</h2>
+  <ul class="summary">
+    <% attributes.each do |attribute| %>
+      <li>
+        <span class="summary_signature">
+          <strong><a href="<%= url_for(attribute,nil) %>"><%= attribute.name %></a></strong>
+        </span>
+        <span class="summary_desc"><%= htmlify(attribute.docstring, :markdown) %></span>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,14 @@
+<% recipes = chefsorted_objects(:recipe) %>
+<% if recipes.size > 0 %>
+  <h2>Recipes summary</h2>
+  <ul class="summary">
+    <% recipes.each do |recipe| %>
+      <li>
+        <span class="summary_signature">
+          <strong><a href="<%= url_for(recipe, nil) %>"><%= recipe.name %></a></strong>
+        </span>
+        <span class="summary_desc"><%= htmlify(recipe.docstring, :markdown) %></span>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
