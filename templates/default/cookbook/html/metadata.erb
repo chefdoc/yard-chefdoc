@@ -9,13 +9,14 @@
        'license' => 'License',
        'source_url' => 'Source',
        'issues_url' => 'Issues'}.each do |m, n| %>
-  <% next if object.send(m.to_sym).nil? %>
+  <% meta_info = object.send(m.to_sym) %>
+  <% next if meta_info.nil? || meta_info.empty? %>
   <tr>
     <td><%= n %></td>
     <% if m.end_with?('_url') %>
-    <td><a href="<%= object.send(m.to_sym) %>" target="_blank"><%= object.send(m.to_sym) %></a></td>
+    <td><a href="<%= meta_info %>" target="_blank"><%= meta_info %></a></td>
     <% else %>
-    <td><%= object.send(m.to_sym) %></td>
+    <td><%= meta_info %></td>
     <% end %>
   </tr>
   <% end %>

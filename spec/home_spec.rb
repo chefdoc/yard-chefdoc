@@ -13,6 +13,10 @@ describe 'home page' do
     expect(page).to have_tag('td', text: '0.1.0')
   end
 
+  it 'does not show empty license' do
+    expect(page).to_not have_tag('td', text: 'License')
+  end
+
   it 'shows the recipe summary' do
     expect(page).to have_content('Recipes summary')
     expect(page).to have_content('Installs the system package for some_service')
