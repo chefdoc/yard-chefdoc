@@ -16,7 +16,6 @@ module YARD::CodeObjects
       #
       def initialize(namespace, name)
         super(namespace, name)
-        @short_desc = ''
       end
 
       # Returns the file for the recipe source

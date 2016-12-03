@@ -17,3 +17,36 @@ tr.r2 { background: #EFEFEF; }
 .visible {
   display: table;
 }
+
+/* Makes the line below not go under metadata table */
+h2 {
+  display: flex
+}
+
+.metadata-box {
+  width: 24em;
+  border-collapse: collapse;
+  line-height: 1.2em;
+  font-size: 88%;
+  border: 1px solid #aaa;
+  border-spacing: 3px;
+  background-color: #f9f9f9;
+  color: black;
+  margin: 0.5em 0 0.5em 1em;
+  padding: 0.2em;
+  float: right;
+  clear: right;
+}
+
+.metadata-box .merged {
+  text-align: center;
+  padding: 0.25em 0.33em 0.33em;
+  line-height: 1.2em;
+  font-size: 1.25em;
+}
+
+.metadata-box .section {
+  text-align: center;
+  padding: 0.25em 0.33em 0.33em;
+  background-color: #ebebeb;
+}

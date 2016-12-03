@@ -8,23 +8,19 @@ module YARD::CodeObjects
     #
     class CookbookObject < ChefObject
       register_element :cookbook
+
       attr_accessor :docstring_type
 
-      # Short description for the cookbook.
-      #
-      # @param short_desc [String] short description for the cookbook
-      #
-      # @return [String] short description for the cookbook
-      #
-      attr_accessor :short_desc
-
-      # Version of the cookbook.
-      #
-      # @param version [String] version for the cookbook
-      #
-      # @return [String] version for the cookbook
-      #
+      # Cookbook metadata
+      attr_accessor :dependencies
       attr_accessor :version
+      attr_accessor :source_url
+      attr_accessor :issues_url
+      attr_accessor :maintainer
+      attr_accessor :maintainer_email
+      attr_accessor :license
+      attr_accessor :platforms
+      attr_accessor :gems
 
       # Creates a new CookbookObject instance.
       # @param namespace [NamespaceObject] namespace to which the cookbook
@@ -35,17 +31,7 @@ module YARD::CodeObjects
       #
       def initialize(namespace, name)
         super(namespace, name)
-        @libraries = []
         @docstring_type = :markdown
-      end
-
-      # Dependencies of the cookbook.
-      #
-      # @return [Array<MethodObject>] dependencies of the cookbook
-      #
-      # TODO: Impement this! And display it in some nice way!
-      def dependencies
-        []
       end
 
       # Libraries defined in the cookbook.
@@ -59,6 +45,10 @@ module YARD::CodeObjects
         root_definitions = YARD::Registry.all(:method).select { |m| m.path =~ /^root#/ }
 
         classes + modules + root_definitions
+      end
+
+      def metadata
+        [@version, @maintainer, @dependencies]
       end
     end
   end

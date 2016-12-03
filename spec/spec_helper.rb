@@ -1,12 +1,5 @@
-# ENV['RAILS_ENV'] ||= 'test'
-
-# require 'sinatra'
-# Sinatra::Application.environment = :test
-# Bundler.require :default, Sinatra::Application.environment
-
-# require 'rails'
-# require 'rails/all'
 require 'rspec'
+require 'rspec-html-matchers'
 require 'action_view'
 
 # Add this to load Capybara integration:
@@ -20,6 +13,7 @@ require_relative '../lib/yard-chefdoc'
 
 RSpec.configure do |config|
   config.include Capybara::DSL
+  config.include RSpecHtmlMatchers
 end
 
 # disable :run

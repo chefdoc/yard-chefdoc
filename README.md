@@ -22,7 +22,7 @@ The cookbook README.md in markdown format will be the landing page. Additionally
 
 ### Cookbook Metadata
 
-Metadata information will be included in the documentation. Currently this is only the cookbooks name and version.
+Metadata information will be included in the documentation automatically. This requires a `metadata.json` to be present, not a `metadata.rb`. Check "cookbook vendoring" for more info.
 
 ### Libraries and standard YARD functionality
 

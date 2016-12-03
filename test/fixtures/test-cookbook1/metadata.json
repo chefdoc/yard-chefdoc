@@ -11,5 +11,13 @@
   "dependencies": {
     "docker": "~> 2.9.2",
     "apache2": "> 0.0.0"
-  }
+  },
+  "platforms": {
+    "debian": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "freebsd": ">= 0.0.0"
+  },
+  "gems": [
+
+  ]
 }

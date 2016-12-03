@@ -11,4 +11,5 @@ group :test do
   gem 'capybara'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'rspec-html-matchers'
 end

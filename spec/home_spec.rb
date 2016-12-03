@@ -6,7 +6,11 @@ describe 'home page' do
   end
 
   it 'presents the README' do
-    expect(page).to have_content('TODO: Enter the cookbook description here.')
+    expect(page).to have_content('Lorem ipsum dolor sit amet')
+  end
+
+  it 'shows metadata version' do
+    expect(page).to have_tag('td', text: '0.1.0')
   end
 
   it 'shows the recipe summary' do

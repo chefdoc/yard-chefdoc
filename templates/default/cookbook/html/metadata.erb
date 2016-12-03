@@ -1,0 +1,55 @@
+<table class="metadata-box">
+  <tr>
+    <th class="merged" colspan="2">Cookbook metadata</th>
+  </tr>
+  <% { 'name' => 'Name',
+       'version' => 'Version',
+       'maintainer' => 'Maintainer',
+       'maintainer_email' => 'Contact',
+       'license' => 'License',
+       'source_url' => 'Source',
+       'issues_url' => 'Issues'}.each do |m, n| %>
+  <% next if object.send(m.to_sym).nil? %>
+  <tr>
+    <td><%= n %></td>
+    <% if m.end_with?('_url') %>
+    <td><a href="<%= object.send(m.to_sym) %>" target="_blank"><%= object.send(m.to_sym) %></a></td>
+    <% else %>
+    <td><%= object.send(m.to_sym) %></td>
+    <% end %>
+  </tr>
+  <% end %>
+
+  <% unless object.dependencies.nil? || object.dependencies.empty? %>
+  <tr class="section">
+    <td class="merged" colspan="2">Dependencies</td>
+  </tr>
+  <% object.dependencies.each do |cookbook, version| %>
+  <tr>
+    <td><%= cookbook %></td>
+    <td><%= version %> </td>
+  </tr>
+  <% end %>
+  <% end %>
+  <% unless object.platforms.nil? || object.platforms.empty? %>
+  <tr class="section">
+    <td class="merged" colspan="2">Supported platforms</td>
+  </tr>
+  <% object.platforms.each do |platform, version| %>
+  <tr>
+    <td><%= platform %></td>
+    <td><%= version %> </td>
+  </tr>
+  <% end %>
+  <% end %>
+  <% unless object.gems.nil? || object.gems.empty? %>
+  <tr class="section">
+    <td class="merged" colspan="2">Rubygem dependencies</td>
+  </tr>
+  <% object.gems.each do |g| %>
+  <tr>
+    <td colspan="2"><%= g %></td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>
