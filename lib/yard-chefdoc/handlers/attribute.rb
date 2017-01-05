@@ -5,8 +5,8 @@ module YARD::Handlers
     # Handles attributes in cookbook
     class AttributeHandler < Base
       MATCH = /^\s*(node\.)?(default|force_default|normal|override|force_override)(\[.+?\])\s*=\s*(.+)/m
-      handles FileMatcher.new(%r{^attributes\/.*\.rb$})
-      # handles MATCH
+      in_file(%r{attributes\/.*\.rb})
+      handles MATCH
 
       def process
         attrib_obj = ChefObject.register(cookbook, name, :attribute)

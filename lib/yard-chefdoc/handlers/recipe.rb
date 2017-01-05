@@ -4,7 +4,8 @@ module YARD::Handlers
   module Chef
     # Handles "recipes" in a cookbook.
     class RecipeHandler < Base
-      handles FileMatcher.new(%r{^recipes\/.*\.rb$})
+      in_file(%r{recipes\/.*\.rb})
+      handles(/.*/) # Handle the file itself, so everything in it
 
       def process
         recipe_obj = ChefObject.register(cookbook, name, :recipe)

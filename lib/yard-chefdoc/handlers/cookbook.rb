@@ -5,7 +5,8 @@ module YARD::Handlers
     # Handles specific cookbook information like README, description and version.
     #
     class CookbookHandler < Base
-      handles FileMatcher.new(/metadata.json/)
+      in_file(/metadata.json/)
+      handles(/.*/)
 
       def process
         metadata = JSON.parse(File.read(File.expand_path(statement.file)))

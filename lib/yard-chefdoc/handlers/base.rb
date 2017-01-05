@@ -6,13 +6,6 @@ module YARD::Handlers
     class Base < YARD::Handlers::Ruby::Base
       include YARD::CodeObjects::Chef
 
-      # File matcher extenstion to restrict handlers to certain files
-      class FileMatcher < YARD::Handlers::Ruby::HandlesExtension
-        def matches?(node)
-          node.file.to_s =~ name
-        end
-      end
-
       # Gets the name of the handled object.
       #
       def name
