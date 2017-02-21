@@ -17,10 +17,11 @@ Gem::Tasks.new
 
 RSpec::Core::RakeTask.new(:spec, [:tag, :trigger] => ['gen_yardoc'])
 
+desc 'Generate yard documentation of all test cookbook'
 task :gen_yardoc do
   FileList.new('test/fixtures/*').each do |cb|
     FileUtils.cd(cb) do
-      sh 'bundle exec yardoc --plugin chefdoc --no-output --no-cache "**/*.{rb,json}"'
+      sh 'bundle exec yardoc --debug --plugin chefdoc --no-output --no-cache "**/*.{rb,json}"'
     end
   end
 end

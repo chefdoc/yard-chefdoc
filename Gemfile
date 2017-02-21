@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-# Latests yard has some important changes that are not yet released
-gem 'yard', git: 'git://github.com/lsegal/yard'
+gem 'yard', '~> 0.9.8'
 
 group :test do
   gem 'rake'

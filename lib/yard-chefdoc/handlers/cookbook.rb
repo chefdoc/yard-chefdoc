@@ -6,7 +6,7 @@ module YARD::Handlers
     #
     class CookbookHandler < Base
       in_file(/metadata.json/)
-      handles(/.*/)
+      handles(/.*/) # Handle the file itself, so everything in it
 
       def process
         metadata = JSON.parse(File.read(File.expand_path(statement.file)))

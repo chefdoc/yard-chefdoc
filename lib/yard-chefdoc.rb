@@ -5,11 +5,13 @@ require 'yard-chefdoc/code_objects/chef'
 require 'yard-chefdoc/code_objects/cookbook'
 require 'yard-chefdoc/code_objects/recipe'
 require 'yard-chefdoc/code_objects/attribute'
+require 'yard-chefdoc/code_objects/resource'
 
 require 'yard-chefdoc/handlers/base'
 require 'yard-chefdoc/handlers/cookbook'
 require 'yard-chefdoc/handlers/recipe'
 require 'yard-chefdoc/handlers/attribute'
+require 'yard-chefdoc/handlers/resource_property'
 
 require 'yard-chefdoc/template_helpers/chef.rb'
 
