@@ -58,7 +58,7 @@ module YARD::CodeObjects
       #
       def children_by_type(type)
         children = YARD::Registry.all(type)
-        children.reject { |child| child.parent != self }
+        children.select { |child| child.parent == self }
       end
     end
   end

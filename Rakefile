@@ -1,6 +1,9 @@
 require 'bundler/setup'
 require 'rubygems/tasks'
 require 'rspec/core/rake_task'
+require 'rubocop/rake_task'
+
+RuboCop::RakeTask.new
 
 desc 'Create test docs'
 task :doc_fixtures do
@@ -15,7 +18,7 @@ end
 
 Gem::Tasks.new
 
-RSpec::Core::RakeTask.new(:spec, [:tag, :trigger] => ['gen_yardoc'])
+RSpec::Core::RakeTask.new(:spec, %i[tag trigger] => ['gen_yardoc'])
 
 desc 'Generate yard documentation of all test cookbook'
 task :gen_yardoc do

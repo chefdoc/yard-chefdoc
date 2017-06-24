@@ -9,8 +9,8 @@
 
 resource_name :etc_dir
 
-# The directory name to create. Can be a path like 'one/two/three'
-# that will be created in /etc/one/two/tree
+# The directory name to create. Can be a path like `one/two/three`
+# that will be created in `/etc/one/two/tree`
 property :dir_name, String, name_property: true
 
 # The owner of the directory to be created.

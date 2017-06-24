@@ -8,4 +8,4 @@
 # Some attributes for stuff
 
 # This is stuff
-default['test-cookbook1']['stuff1'] = %w(one two three)
+default['test-cookbook1']['stuff1'] = %w[one two three]

@@ -14,9 +14,9 @@ module YARD::Handlers
 
         cookbook_obj = cookbook
 
-        %w(name version dependencies source_url
+        %w[name version dependencies source_url
            issues_url maintainer maintainer_email
-           license platforms gems).each do |m|
+           license platforms gems].each do |m|
           cookbook_obj.send("#{m}=", metadata[m]) if metadata.key?(m)
         end
 

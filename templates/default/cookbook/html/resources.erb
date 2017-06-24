@@ -1,0 +1,14 @@
+<% resources = chefsorted_objects(:resource) %>
+<% if resources.size > 0 %>
+  <h2>Resources summary</h2>
+  <ul class="summary">
+    <% resources.each do |resource| %>
+      <li>
+        <span class="summary_signature">
+          <strong><a href="<%= url_for(resource,nil) %>"><%= resource.name %></a></strong>
+        </span>
+        <span class="summary_desc"><%= htmlify(resource.docstring, :markdown) %></span>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

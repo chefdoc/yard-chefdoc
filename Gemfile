@@ -2,13 +2,14 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'yard', '~> 0.9.8'
+gem 'yard', '~> 0.9.9'
 
 group :test do
-  gem 'rake'
-  gem 'rubygems-tasks'
   gem 'capybara'
+  gem 'rake'
   gem 'rspec'
-  gem 'rspec-rails'
   gem 'rspec-html-matchers'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubygems-tasks'
 end

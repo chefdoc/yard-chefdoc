@@ -8,14 +8,7 @@ def init
 end
 
 def stylesheets_full_list
-  %w(css/full_list.css css/common.css css/chefdoc.css)
-end
-
-# Something is wrong here. Objects should be accessible via options.objects
-# or @objects, but those are empty. Use this as a quick workaround until a
-# a nice fix is found.
-def objects
-  Registry.all
+  %w[css/full_list.css css/common.css css/chefdoc.css]
 end
 
 # Generates searchable recipe list in the output.
@@ -28,6 +21,12 @@ end
 def generate_attributes_list
   attributes = chefsorted_objects(:attribute)
   generate_full_list(attributes, 'Attribute', 'attributes')
+end
+
+# Generates searchable resource list in the output.
+def generate_resources_list
+  resources = chefsorted_objects(:resource)
+  generate_full_list(resources, 'Resource', 'resources')
 end
 
 # Called by menu_lists in layout/html/setup.rb by default
@@ -82,6 +81,7 @@ class TreeContext
   end
 end
 
+# rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
 # @return [String] HTML output of the classes to be displayed in the
 #    full_list_class template.
 def class_list(root = Registry.root, tree = TreeContext.new)
@@ -111,3 +111,4 @@ def class_list(root = Registry.root, tree = TreeContext.new)
   end
   out
 end
+# rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity

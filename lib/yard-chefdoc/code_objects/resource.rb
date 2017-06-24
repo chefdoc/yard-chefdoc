@@ -35,8 +35,6 @@ module YARD::CodeObjects
     # Full docs here http://www.rubydoc.info/gems/chef/Chef%2FMixin%2FProperties%2FClassMethods:property
     class Property
       attr_accessor :identifier, # The name of the property
-                    :default, # The default value
-                    :name, # Wether or not this is the name property (true, false)
                     :docstring, # The attrbitues docstring
                     :type, # The ruby type of the property
                     :options # The various property options

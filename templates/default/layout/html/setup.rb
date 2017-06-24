@@ -36,6 +36,8 @@ def nav_select(type)
     'recipes'
   when 'attribute'
     'attributes'
+  when 'resource'
+    'resources'
   when 'module', 'class'
     'libraries'
   when 'cookbook', 'root'
@@ -50,7 +52,7 @@ def javascripts
 end
 
 def stylesheets
-  super + %w(css/chefdoc.css)
+  super + %w[css/chefdoc.css]
 end
 
 # Add yard-chef specific menus
@@ -59,6 +61,7 @@ def menu_lists
   [
     { type: 'recipes', title: 'Recipes', search_title: 'Recipe List' },
     { type: 'attributes', title: 'Attributes', search_title: 'Attributes List' },
+    { type: 'resources', title: 'Resources', search_title: 'Resource List' },
     { type: 'libraries', title: 'Libraries', search_title: 'Libraries List' },
     { type: 'file', title: 'Files', search_title: 'File List' }
   ]

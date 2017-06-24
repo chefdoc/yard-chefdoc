@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module YARD::Templates::Helpers
   # The chef helper module
   module ChefHelper
@@ -11,7 +12,7 @@ module YARD::Templates::Helpers
     # @return [Array<CookbookObject>] list of CookbookObjects
     #
     def chefsorted_objects(type = nil)
-      children = objects.select { |o| o.type == type }.sort { |x, y| x.name.to_s <=> y.name.to_s }
+      children = ::YARD::Registry.all.select { |o| o.type == type }.sort { |x, y| x.name.to_s <=> y.name.to_s }
       default_index = children.find_index { |r| r.name.to_s == 'default' }
 
       return children if default_index.nil?

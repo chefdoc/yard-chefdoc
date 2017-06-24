@@ -1,0 +1,18 @@
+<h2>Properties</h2>
+  <% object.properties.each do |p| %>
+  <div>
+    <h4><%= p.identifier %>:</h4>
+    <% unless p.type.nil? %>
+    Type: <code><%= p.type %></code>
+    <% end %>
+    <% unless p.options.nil? %>
+    <p>Other options</p>
+    <ul>
+      <% p.options.each do |option, value| %>
+      <li><%= option %>: <code><%= value %></code></li>
+      <% end %>
+    </ul>
+    <% end %>
+    <%= htmlify(p.docstring, :markdown) %>
+  </div>
+<% end %>

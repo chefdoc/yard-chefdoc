@@ -37,16 +37,12 @@ module YARD::Handlers
         props = {}
         statement[1].entries.each do |e|
           next if e == false
-          if [:var_ref, :array].include?(e.type)
+          if %i[var_ref array].include?(e.type)
             props[:type] = e.source
           elsif e.type == :symbol_literal
-            props[:name] = e.source
+            props[:identifier] = e.source.delete(':')
           elsif e.type == :list
-            opts = parse_option_list(e)
-
-            props[:default] = opts.delete('default')
-            props[:name] = opts.delete('name_property')
-            props[:options] = opts
+            props[:options] = parse_option_list(e)
           end
         end
         props[:docstring] = nodoc ? '' : statement.docstring
@@ -59,6 +55,7 @@ module YARD::Handlers
       # @return [Hash] The options passed as a hash
       #
       def parse_option_list(list)
+        return nil if list.nil? || list.empty?
         opts = {}
         list.each do |opt|
           next unless opt.type == :assoc

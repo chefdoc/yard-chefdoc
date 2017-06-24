@@ -3,6 +3,6 @@ module MyTestLib
   #
   # @return [String] The path to Java or a warning to not use Java
   def javafinder
-    return 'DONT USE JAVA... EVER!'
+    'DONT USE JAVA... EVER!'
   end
 end
