@@ -5,7 +5,6 @@ module YARD::CodeObjects
     class AttributeObject < ChefObject
       register_element :attribute
       attr_accessor :attributes
-      attr_accessor :header
 
       # Creates a new instance of the AttributeObject which represents a file in
       # the attributes directory.

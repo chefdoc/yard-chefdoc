@@ -9,14 +9,7 @@ module YARD::Handlers
       handles MATCH
 
       def process
-        attrib_obj = ChefObject.register(cookbook, name, :attribute)
-
-        if attrib_obj.initialized.nil?
-          src = IO.read(File.expand_path(statement.file))
-          attrib_obj.header = find_header_in(src)
-          attrib_obj.docstring = find_description_in(attrib_obj.header)
-          attrib_obj.initialized = true
-        end
+        attrib_obj = ChefObject.register(name, :attribute, statement.file)
 
         docstring_is_header = (statement.docstring == attrib_obj.header)
         attrib_obj.add attr_hash(docstring_is_header) if statement.type == :assign

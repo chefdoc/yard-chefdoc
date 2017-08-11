@@ -12,6 +12,7 @@ require 'yard-chefdoc/handlers/cookbook'
 require 'yard-chefdoc/handlers/recipe'
 require 'yard-chefdoc/handlers/attribute'
 require 'yard-chefdoc/handlers/resource_property'
+require 'yard-chefdoc/handlers/resource_action'
 
 require 'yard-chefdoc/template_helpers/chef.rb'
 

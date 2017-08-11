@@ -1,7 +1,7 @@
 include Helpers::ChefHelper
 
 def init
-  sections.push :resource, [:properties]
+  sections.push :resource, %i[properties actions]
 end
 
 def properties

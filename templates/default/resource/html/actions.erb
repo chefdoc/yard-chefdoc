@@ -1,0 +1,18 @@
+<h2>Actions</h2>
+  <% object.actions.each do |p| %>
+  <div>
+    <h4><%= p.identifier %>:</h4>
+    <%= htmlify(p.docstring, :markdown) %>
+    <span class="showSource">[<a href="#" class="toggleSource">View source</a>]</span>
+    <table class="source_code invisible">
+      <tr>
+        <td>
+          <pre class="lines"><%= h format_lines(p) %></pre>
+        </td>
+        <td>
+          <pre class="code"><%= html_syntax_highlight p.source %></pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end %>

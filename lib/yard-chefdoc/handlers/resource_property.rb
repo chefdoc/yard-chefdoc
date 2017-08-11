@@ -8,14 +8,7 @@ module YARD::Handlers
       handles method_call(:property)
 
       def process
-        resource_obj = ChefObject.register(cookbook, name, :resource)
-
-        if resource_obj.initialized.nil?
-          src = IO.read(File.expand_path(statement.file))
-          resource_obj.header = find_header_in(src)
-          resource_obj.docstring = find_description_in(resource_obj.header)
-          resource_obj.initialized = true
-        end
+        resource_obj = ChefObject.register(name, :resource, statement.file)
 
         docstring_is_header = (statement.docstring == resource_obj.header)
         resource_obj.add_property res_prop_hash(docstring_is_header)
