@@ -1,7 +1,8 @@
 <h2>Actions</h2>
+  <h3>Default action: <a href="#action_<%= object.default_action %>"><%= object.default_action %></a></h3>
   <% object.actions.each do |p| %>
   <div>
-    <h4><%= p.identifier %>:</h4>
+    <h4><a name="action_<%= p.identifier %>"><%= p.identifier %></a>:</h4>
     <%= htmlify(p.docstring, :markdown) %>
     <span class="showSource">[<a href="#" class="toggleSource">View source</a>]</span>
     <table class="source_code invisible">

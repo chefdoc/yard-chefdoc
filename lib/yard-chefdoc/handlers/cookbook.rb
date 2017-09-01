@@ -5,7 +5,7 @@ module YARD::Handlers
     # Handles specific cookbook information like README, description and version.
     #
     class CookbookHandler < Base
-      in_file(/metadata.json/)
+      in_file(/^metadata\.json$/)
       handles(/.*/) # Handle the file itself, so everything in it
 
       def process

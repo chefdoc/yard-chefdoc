@@ -4,11 +4,17 @@ include Helpers::ChefHelper
 def init
   asset('css/chefdoc.css', file('css/chefdoc.css', true))
 
+  # For this we need the stuff from the feature_stats_generation branch
+  # Display only chef specific stuff or also class, module etc stuff??
+  # Show normal output in terminal and generate json additionally by default
+  # Will not be easy to do, but quite possible...
+  asset('stats', 'this is static')
+
   super
 end
 
 def stylesheets_full_list
-  %w[css/full_list.css css/common.css css/chefdoc.css]
+  %w[css/full_list.css css/common.css]
 end
 
 # Generates searchable recipe list in the output.

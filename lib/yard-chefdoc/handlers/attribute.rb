@@ -5,22 +5,14 @@ module YARD::Handlers
     # Handles attributes in cookbook
     class AttributeHandler < Base
       MATCH = /^\s*(node\.)?(default|force_default|normal|override|force_override)(\[.+?\])\s*=\s*(.+)/m
-      in_file(%r{attributes\/.*\.rb})
+      in_file(%r{^attributes\/.*\.rb$})
       handles MATCH
 
       def process
-        attrib_obj = ChefObject.register(name, :attribute, statement.file)
+        attrib_obj = ChefObject.register(filename, :attribute, statement.file)
 
         docstring_is_header = (statement.docstring == attrib_obj.header)
         attrib_obj.add attr_hash(docstring_is_header) if statement.type == :assign
-      end
-
-      # Gets the attribute name derived from the filename
-      #
-      # @return [String] the attribute name
-      #
-      def name
-        File.basename(statement.file, '.rb')
       end
 
       # Creates the hash to initialize the single attribute object

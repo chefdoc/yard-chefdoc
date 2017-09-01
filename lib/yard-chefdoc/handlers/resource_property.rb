@@ -4,22 +4,14 @@ module YARD::Handlers
   module Chef
     # Handles properties in custom resources and LWRPs
     class ResourcePropertyHandler < Base
-      in_file(%r{resources\/.*\.rb})
+      in_file(%r{^resources\/.*\.rb$})
       handles method_call(:property)
 
       def process
-        resource_obj = ChefObject.register(name, :resource, statement.file)
+        resource_obj = ChefObject.register(filename, :resource, statement.file)
 
         docstring_is_header = (statement.docstring == resource_obj.header)
         resource_obj.add_property res_prop_hash(docstring_is_header)
-      end
-
-      # Gets the attribute name derived from the filename
-      #
-      # @return [String] the attribute name
-      #
-      def name
-        File.basename(statement.file, '.rb')
       end
 
       # Creates the hash to initialize the single resource property object

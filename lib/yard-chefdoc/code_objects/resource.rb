@@ -7,6 +7,7 @@ module YARD::CodeObjects
       attr_accessor :properties,
                     :actions,
                     :default_action,
+                    :resource_name,
                     :load_current_value
 
       # Creates a new instance of the ResourceObject
@@ -19,6 +20,7 @@ module YARD::CodeObjects
       #
       def initialize(namespace, name)
         super(namespace, name)
+        @resource_name = name
         @properties = []
         @actions = []
       end

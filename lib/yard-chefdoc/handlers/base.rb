@@ -12,6 +12,14 @@ module YARD::Handlers
         statement.parameters.first.jump(:string_content, :ident).source
       end
 
+      # Gets the filename which is often used as the object name in chef
+      #
+      # @return [String] the file name without the rb extension
+      #
+      def filename
+        File.basename(statement.file, '.rb')
+      end
+
       # Registers the cookbook in {YARD::Registry} and returns the same.
       #
       # @return [ChefObject] the ChefObject
