@@ -31,4 +31,12 @@ describe 'home page' do
     expect(page).to have_content('Finder::Node')
     expect(page).to have_content('MyTestLib')
   end
+
+  it 'shows cookbook documentation table' do
+    expect(page).to have_content('Cookbook documentation statistics')
+  end
+
+  it 'shows overall percentage' do
+    expect(page).to have_content('Total percentage 86.96%')
+  end
 end

@@ -24,7 +24,7 @@ desc 'Generate yard documentation of all test cookbook'
 task :gen_yardoc do
   FileList.new('test/fixtures/*').each do |cb|
     FileUtils.cd(cb) do
-      sh 'bundle exec yardoc --debug --plugin chefdoc --no-output --no-cache "**/*.{rb,json}"'
+      sh 'bundle exec yardoc --debug --plugin chefdoc "**/*.{rb,json}"'
     end
   end
 end

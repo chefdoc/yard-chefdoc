@@ -2,13 +2,8 @@ include Helpers::ChefHelper
 
 # Register custom stylesheets
 def init
+  asset('stats', JSON.pretty_generate(YARD::CLI::Stats.new(false).get_statistics_hash))
   asset('css/chefdoc.css', file('css/chefdoc.css', true))
-
-  # For this we need the stuff from the feature_stats_generation branch
-  # Display only chef specific stuff or also class, module etc stuff??
-  # Show normal output in terminal and generate json additionally by default
-  # Will not be easy to do, but quite possible...
-  asset('stats', 'this is static')
 
   super
 end

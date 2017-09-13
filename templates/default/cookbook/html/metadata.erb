@@ -54,3 +54,33 @@
   <% end %>
   <% end %>
 </table>
+
+<table class="metadata-box">
+  <tr>
+    <th class="merged" colspan="2">Cookbook documentation statistics</th>
+  </tr>
+  <tr>
+    <td>Total percentage</td>
+    <td><%= @cookbook_statistics['total_percentage'].round(2) %>%</td>
+  </tr>
+  <tr>
+    <td class="merged" colspan="2">Chef</th>
+  </tr>
+  <% @cookbook_statistics.each do |stat, values| %>
+  <% next unless (values.is_a?(Hash) && stat.start_with?('chef_') && !values['items'].zero?) %>
+  <tr>
+    <td><%= values['name'].sub(/^Chef\s/, '') %></td>
+    <td><%= values['percentage'].to_f.round(1) %>% (<%= values['items'] - values['undocumented'] %> of <%= values['items'] %>)</td>
+  </tr>
+  <% end %>
+  <tr>
+    <td class="merged" colspan="2">Ruby</th>
+  </tr>
+  <% @cookbook_statistics.each do |stat, values| %>
+  <% next unless (values.is_a?(Hash) && !stat.start_with?('chef_') && !values['items'].zero?) %>
+  <tr>
+    <td><%= values['name'] %></td>
+    <td><%= values['percentage'].to_f.round(1) %>% (<%= values['items'] - values['undocumented'] %> of <%= values['items'] %>)</td>
+  </tr>
+  <% end %>
+</table>

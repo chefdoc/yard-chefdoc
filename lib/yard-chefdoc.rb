@@ -1,6 +1,8 @@
 require 'yard'
 require 'json'
 
+require_relative 'yard/cli/stats'
+
 require 'yard-chefdoc/code_objects/chef'
 require 'yard-chefdoc/code_objects/cookbook'
 require 'yard-chefdoc/code_objects/recipe'
@@ -16,7 +18,7 @@ require 'yard-chefdoc/handlers/resource_action'
 require 'yard-chefdoc/handlers/resource_resource_name'
 require 'yard-chefdoc/handlers/resource_default_action'
 
-require 'yard-chefdoc/template_helpers/chef.rb'
+require 'yard-chefdoc/template_helpers/chef'
 
 require 'yard-chefdoc/version'
 
