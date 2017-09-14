@@ -58,6 +58,10 @@ Attributes are automatically parsed and added to the documentation. Each attribu
 default['my-application']['plugins'] = %w(github slack ldap)
 ```
 
+### Resources
+
+Modern Chef custom resources are automatically documented. Comments on properties and actions are added accordingly.
+
 ## Generating Cookbook Docs
 
 To generate documentation you can either use the command line or create a rake task.
@@ -75,18 +79,11 @@ require 'yard'
 YARD::Config.load_plugin 'chefdoc'
 YARD::Rake::YardocTask.new do |t|
   t.files = ['<path_to_cookbooks_repo>/**/*.{rb,json}']
-  #t.options = ['--debug']
+  # t.options = ['--debug']
 end
 ```
 
 Then just run `rake yard`.
-
-### Command-line
-
-From the root of your cookbook repository, run the ```yardoc``` command to
-generate documentation using the following command
-
- `yardoc '**/*.{rb,json}' --plugin chef`
 
 ## Viewing Cookbook Docs
 
@@ -102,5 +99,5 @@ For more information about YARD server see [YARD documentation](http://rubydoc.i
 
 This project was originally a fork of yard-chef by RightScale, Inc. Special thanks goes to them for providing the base for this.
 
-Copyright (c) 2016 Jörg Herzinger. This code is distributed under the MIT license, see LICENSE for details.<br>
+Copyright (c) 2017 Jörg Herzinger. This code is distributed under the MIT license, see LICENSE for details.<br>
 Copyright (c) 2012 RightScale, Inc.

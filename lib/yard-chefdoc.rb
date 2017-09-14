@@ -43,7 +43,7 @@ module YARD
       # as individual pages. This adds recipes, attributes...
       # @return [Array<CodeObjects::Base>] a list of code objects to process
       def all_objects
-        Registry.all(:root, :module, :class, :recipe, :attribute)
+        Registry.all(:root, :module, :class, :recipe, :attribute, :resource)
       end
     end
   end

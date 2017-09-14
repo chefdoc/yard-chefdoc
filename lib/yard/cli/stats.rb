@@ -4,19 +4,19 @@ module YARD
   module CLI
     class Stats < Yardoc
       STATS_ORDER = %i[files modules classes constants attributes methods
-        chef_attribute_files chef_attributes chef_recipes chef_resources
-        chef_resource_properties chef_resource_actions]
+                       chef_attribute_files chef_attributes chef_recipes chef_resources
+                       chef_resource_properties chef_resource_actions]
 
       def stats_for_chef_recipes
         objs = all_objects.select { |m| m.type == :recipe }
-        undoc = objs.select { |m| m.docstring.blank? }
+        undoc = objs.select { |m| !m.docstring.nil? && m.docstring.blank? }
         @undoc_list |= undoc if @undoc_list
         output 'Chef Recipes', objs.size, undoc.size
       end
 
       def stats_for_chef_attribute_files
         objs = all_objects.select { |m| m.type == :attribute }
-        undoc = objs.select { |m| m.docstring.empty? }
+        undoc = objs.select { |m| !m.docstring.nil? && m.docstring.empty? }
         @undoc_list |= undoc if @undoc_list
         output 'Chef Attribute files', objs.size, undoc.size
       end
@@ -24,14 +24,14 @@ module YARD
       def stats_for_chef_attributes
         objs = all_objects.select { |m| m.type == :attribute }
         objs.map!(&:attributes).flatten!
-        undoc = objs.select { |m| m.docstring.empty? }
+        undoc = objs.select { |m| !m.docstring.nil? && m.docstring.empty? }
         @undoc_list |= undoc if @undoc_list
         output 'Chef Attributes', objs.size, undoc.size
       end
 
       def stats_for_chef_resources
         objs = all_objects.select { |m| m.type == :resource }
-        undoc = objs.select { |m| m.docstring.blank? }
+        undoc = objs.select { |m| !m.docstring.nil? && m.docstring.blank? }
         @undoc_list |= undoc if @undoc_list
         output 'Chef Resources', objs.size, undoc.size
       end
@@ -39,7 +39,7 @@ module YARD
       def stats_for_chef_resource_properties
         objs = all_objects.select { |m| m.type == :resource }
         objs.map!(&:properties).flatten!
-        undoc = objs.select { |m| m.docstring.empty? }
+        undoc = objs.select { |m| !m.docstring.nil? && m.docstring.empty? }
         @undoc_list |= undoc if @undoc_list
         output 'Chef Resource properties', objs.size, undoc.size
       end
@@ -47,7 +47,7 @@ module YARD
       def stats_for_chef_resource_actions
         objs = all_objects.select { |m| m.type == :resource }
         objs.map!(&:actions).flatten!
-        undoc = objs.select { |m| m.docstring.empty? }
+        undoc = objs.select { |m| !m.docstring.nil? && m.docstring.empty? }
         @undoc_list |= undoc if @undoc_list
         output 'Chef Resource actions', objs.size, undoc.size
       end
@@ -68,13 +68,12 @@ module YARD
       def output(name, data, undoc = nil)
         @total += data if data.is_a?(Integer) && undoc
         @undocumented += undoc if undoc.is_a?(Integer)
-        data =
-        if undoc
-          ("%5s (% 5d undocumented)" % [data, undoc])
-        else
-          "%5s" % data
-        end
-        log.puts("%-25s %s" % [name + ":", data])
+        data = if undoc
+                 "#{format('%5s', data)} (#{format('%5d', undoc)} undocumented)"
+               else
+                 format('%5s', data)
+               end
+        log.puts("#{format('%-25s', name + ':')} #{format('%s', data)}")
       end
 
       # Returns statistics for machine readable output generation
@@ -88,13 +87,11 @@ module YARD
       def output_hash(name, data, undoc = nil)
         @total += data if data.is_a?(Integer) && undoc
         @undocumented += undoc if undoc.is_a?(Integer)
-        percent = data.to_i.zero? ? '100' : ((data.to_i - undoc.to_i)/data.to_f)*100
+        percent = data.to_i.zero? ? '100' : ((data.to_i - undoc.to_i) / data.to_f) * 100
         { name.tr(' ', '_').downcase => { 'name' => name,
                                           'items' => data.to_i,
                                           'undocumented' => undoc.to_i,
-                                          'percentage' => percent
-                                        }
-        }
+                                          'percentage' => percent } }
       end
 
       # Prints statistics for different object types in JSON format
@@ -102,10 +99,10 @@ module YARD
       # To add statistics for a specific type, add a method +#stats_for_TYPE+
       # to this class that calls {#output}.
       def print_statistics_json
-        log.puts JSON.pretty_generate(get_statistics_hash)
+        log.puts JSON.pretty_generate(statistics_hash)
       end
 
-      def get_statistics_hash
+      def statistics_hash
         # Use JSON output for the following stats_for_* calls
         alias output output_hash
         # This is necessary so we get full access to the stats from the templates. Probably a
@@ -132,9 +129,9 @@ module YARD
       private
 
       def total_percentage
-        if @undocumented == 0
+        if @undocumented.zero?
           100
-        elsif @total == 0
+        elsif @total.zero?
           0
         else
           (@total - @undocumented).to_f / @total.to_f * 100

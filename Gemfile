@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'yard', '~> 0.9.9'
+gem 'yard'
 
 group :test do
   gem 'capybara'

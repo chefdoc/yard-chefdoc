@@ -2,7 +2,9 @@ include Helpers::ChefHelper
 
 # Register custom stylesheets
 def init
-  asset('stats', JSON.pretty_generate(YARD::CLI::Stats.new(false).get_statistics_hash))
+  # Maybe add an API endpoint for stats at some time
+  # asset('api/stats.json', JSON.pretty_generate(YARD::CLI::Stats.new(false).statistics_hash))
+
   asset('css/chefdoc.css', file('css/chefdoc.css', true))
 
   super
