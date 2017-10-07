@@ -26,4 +26,3 @@ libraries = {
 }
 options = SymbolHash.new(false).update(single_library: true, caching: false)
 Capybara.app = YARD::Server::RackAdapter.new(libraries, options, server_options)
-Capybara.default_wait_time = 15

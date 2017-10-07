@@ -7,7 +7,7 @@ RuboCop::RakeTask.new
 
 Gem::Tasks.new
 
-RSpec::Core::RakeTask.new(:spec, %i[tag trigger]) do |t|
+RSpec::Core::RakeTask.new(:spec, %i[tag trigger] => %i[doc_files]) do |t|
   t.rspec_opts = '--format d'
 end
 
