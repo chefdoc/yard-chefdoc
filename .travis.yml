@@ -1,6 +1,8 @@
+
 language: ruby
 cache: bundler
 rvm:
- - 2.3
+  - 2.3
 
- script: bundle exec rake
+script:
+  - bundle exec rake
