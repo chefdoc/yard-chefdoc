@@ -26,3 +26,4 @@ libraries = {
 }
 options = SymbolHash.new(false).update(single_library: true, caching: false)
 Capybara.app = YARD::Server::RackAdapter.new(libraries, options, server_options)
+sleep 2 # Wait for server to come up and parse the cookbook(s). Mostly needed for travis.ci.

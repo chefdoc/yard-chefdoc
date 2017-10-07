@@ -1,5 +1,7 @@
 # YARD-Chef
 
+[![Build Status](https://travis-ci.org/chefdoc/yard-chefdoc.svg?branch=master)](https://travis-ci.org/chefdoc/yard-chefdoc) [![Gem Version](https://badge.fury.io/rb/yard-chefdoc.svg)](https://badge.fury.io/rb/yard-chefdoc)
+
 Disclaimer: This YARD plugin is still in the early development stages. Please use with care and expect things to break.
 
 ## Description
