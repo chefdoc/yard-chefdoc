@@ -5,7 +5,7 @@ module YARD
     class Stats < Yardoc
       STATS_ORDER = %i[files modules classes constants attributes methods
                        chef_attribute_files chef_attributes chef_recipes chef_resources
-                       chef_resource_properties chef_resource_actions]
+                       chef_resource_properties chef_resource_actions].freeze
 
       def stats_for_chef_recipes
         objs = all_objects.select { |m| m.type == :recipe }
@@ -104,7 +104,7 @@ module YARD
 
       def statistics_hash
         # Use JSON output for the following stats_for_* calls
-        alias output output_hash
+        alias output output_hash # rubocop:disable Style/Alias
         # This is necessary so we get full access to the stats from the templates. Probably a
         # bad patch, but for now this is ok.
         # TODO: Refactor

@@ -1,11 +1,7 @@
 require 'rspec'
 require 'rspec-html-matchers'
-require 'action_view'
-
-# Add this to load Capybara integration:
 require 'capybara'
 require 'capybara/rspec'
-# require 'capybara/rails'
 require 'capybara/dsl'
 
 require 'yard'

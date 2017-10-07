@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'home page' do
+describe 'resource::etc_dir' do
   before(:each) do
     visit('/docs/resource/etc_dir')
   end

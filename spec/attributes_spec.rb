@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'home page' do
+describe 'attributes::default' do
   before(:each) do
     visit('/docs/attribute/default')
   end

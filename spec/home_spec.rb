@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'home page' do
+describe 'overview' do
   before(:each) do
     visit('/')
   end

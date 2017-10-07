@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'home page' do
+describe 'recipe::default' do
   before(:each) do
     visit('/docs/recipe/default')
   end

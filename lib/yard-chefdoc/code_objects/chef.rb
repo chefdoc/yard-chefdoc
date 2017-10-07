@@ -23,7 +23,7 @@ module YARD::CodeObjects
       # @param element [Class] chef element class
       #
       def self.register_element(element)
-        @@chef_elements ||= {}
+        @@chef_elements ||= {} # rubocop:disable Style/ClassVars
         @@chef_elements[element] = self
       end
 
